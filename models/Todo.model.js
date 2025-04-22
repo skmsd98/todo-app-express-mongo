@@ -27,6 +27,11 @@ const todoSchema = mongoose.Schema(
       type: Date,
       default: null,
     },
+    listId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "List",
+      required: true,
+    },
   },
   { timestamps: true }
 );

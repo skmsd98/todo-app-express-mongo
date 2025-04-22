@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const todosRouter = require("./routers/todosRouter");
+const listsRouter = require("./routers/listsRouter");
 const connectDB = require("./config/dbConnection");
 const errorHandler = require("./middlewares/errorHandler");
 const notFoundHandler = require("./middlewares/notFoundHandler");
@@ -11,7 +12,8 @@ const startServer = async () => {
     const app = express();
 
     app.use(express.json());
-    app.use("/api/todos", todosRouter);
+    app.use("/api/lists", listsRouter);
+    app.use("/api/lists/:listId/todos", todosRouter);
     app.use(notFoundHandler);
     app.use(errorHandler);
 
